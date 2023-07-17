@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            
+            width: 300px;
+            background: rgb(131, 103, 60) ;
+            position: relative;
+            top: 90px;
+            left: 550px;
+        }
+        h1{
+            display: grid;
+            justify-items: center;
+        }
+        input{
+            width: 98%;
+            height: 40px;
+        }
+        #a{
+            display: flex;
+        }
+        button{
+            width: 90px;
+            height: 50px;
+        }
+        button:hover{
+            background: rgb(151, 43, 66);
+        }
+        .ou{
+            width: 300px;
+            height: 200px;
+            background: rgb(136, 39, 141);
+            position: relative;
+            top: -180px;
+            left: 860px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i>Calculator</i></h1>
+        <hr>
+        
+        <hr>
+        <div id="a">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>+</button>
+        </div>
+        <div id="a">
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>-</button>
+        </div>
+        <div id="a">
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>*</button>
+        </div>
+        <div id="a">
+            <button>00</button>
+            <button>0</button>
+            <button>.</button>
+            <button>/</button>
+        </div>
+  
+        <div id="a">
+            <button>%</button>
+            <button>=</button>
+            <button>X</button>
+            <button>AC</button>
+        </div>
+    </div>
+    <div class="ou">
+        <h1><i>Output</i></h1>
+        <hr>
+        <input type="text" id="value" placeholder="0">
+        <hr>
+    </div>
+    <script>
+        let input = document.getElementById('value');
+        let buttons = document.querySelectorAll('button');
+        let string ="";
+        let arr = Array.from(buttons);
+        arr.forEach(button =>{
+            button.addEventListener('click', (e) =>{
+                if(e.target.innerHTML== '='){
+                    string = eval(string);
+                    input.value = string;
+                }
+                else if(e.target.innerHTML == 'AC'){
+                    string = "";
+                    input.value = string;
+                }
+                else if(e.target.innerHTML == 'X'){
+                    string = string.substring(0, string.length-1);
+                    input.value=string;
+                }
+                else{
+                   string += e.target.innerHTML;
+                   input.value=string;
+                }
+            })
+        })
+    </script>
+</body>
+</html>
